@@ -25,7 +25,8 @@ export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/local/cuda-10.2/lib64
 export LIBRARY_PATH=$LIBRARY_PATH:/usr/local/cuda-10.2/lib64
 
 # Clone weaver-benchmark
-git clone --recursive https://github.com/colizz/weaver-benchmark.git
+git clone --recursive https://github.com/friti/weaver-benchmark.git
+#git clone --recursive https://github.com/colizz/weaver-benchmark.git
 ln -s ../top_tagging weaver-benchmark/weaver/top_tagging
 cd weaver-benchmark/weaver/
 mkdir output
@@ -39,7 +40,8 @@ python train.py \
  --network-config top_tagging/networks/${MODEL_CONFIG} \
  --model-prefix output/${PREFIX} \
  --gpus 0 --batch-size 1024 --start-lr 5e-3 --num-epochs 1 --optimizer ranger \
- --log output/${PREFIX}.train.log
+ --log output/${PREFIX}.train.log \
+ --comet 'model_name'
 
 # Predicting score, using 1 GPU
 python train.py --predict \
