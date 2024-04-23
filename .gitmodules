@@ -1,3 +1,3 @@
-[submodule "weaver"]
+[submodule "weaver_fr"]
 	path = weaver
-	url = https://github.com/hqucms/weaver.git
+	url = git@github.com:friti/weaver.git
