@@ -2,7 +2,33 @@
 
 [`Weaver`](https://github.com/hqucms/weaver-core) configurations for ML benchmark tasks
 
-The materials are prepared for the CMS ML Documentation: https://cms-ml.github.io/documentation/inference/particlenet.html
+## Set up the environment 
+```
+wget https://repo.anaconda.com/miniconda/Miniconda3-py39_24.1.2-0-Linux-x86_64.sh
+bash Miniconda3-py39_24.1.2-0-Linux-x86_64.sh
+# Follow the instructions to finish the installation
+
+# Make sure to choose `yes` for the following one to let the installer initialize Miniconda3
+# > Do you wish the installer to initialize Miniconda3
+# > by running conda init? [yes|no]
+
+# disable auto activation of the base environment
+conda config --set auto_activate_base false
+
+# create conda anvironment weaver
+conda create -n weaver python=3.11
+conda activate weaver
+
+conda install -c conda-forge root
+pip3 install numpy 
+pip3 install scikit-learn scipy matplotlib tqdm
+pip3 install PyYAML beautifulsoup4 lz4 xxhash tables 
+pip3 install vector tensorboard
+pip3 install uproot awkward awkward0
+pip3 install onnx onnxruntime-gpu onnxruntime
+pip3 install torch
+```
+
 
 ## Pre-processing for weights
 
