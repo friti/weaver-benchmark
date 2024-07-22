@@ -19,14 +19,17 @@ conda config --set auto_activate_base false
 conda create -n weaver python=3.11
 conda activate weaver
 
-conda install -c conda-forge root
 pip3 install numpy 
 pip3 install scikit-learn scipy matplotlib tqdm
 pip3 install PyYAML beautifulsoup4 lz4 xxhash tables 
 pip3 install vector tensorboard
 pip3 install uproot awkward awkward0
 pip3 install onnx onnxruntime-gpu onnxruntime
-pip3 install torch
+pip3 install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu118
+pip3 cache purge
+
+conda install -c conda-forge root
+
 ```
 
 
