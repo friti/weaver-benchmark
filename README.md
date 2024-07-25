@@ -39,7 +39,10 @@ git clone [git@github.com](mailto:git@github.com):friti/weaver-benchmark.git -b 
 ln -s <path-to-weaver-benchmark>/tau_tagging <path-to-weaver-core>/weaver-core/weaver/
 ln -s <path-to-weaver-core>/weaver-core/ <path-to-weaver-benchmark>/weaver-benchmark/
 
+cd weaver-benchmark/weaver-core/weaver
+mkdir output
 cd weaver-benchmark/condor
+mkdir jobs_log
 condor_submit submit.sub
 ```
 
