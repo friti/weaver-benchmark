@@ -32,6 +32,16 @@ conda install -c conda-forge root
 
 ```
 
+## Prepare for running on condor
+```
+git clone [git@github.com](mailto:git@github.com):friti/weaver-core.git -b domain_adaptation
+git clone [git@github.com](mailto:git@github.com):friti/weaver-benchmark.git -b softditau
+ln -s <path-to-weaver-benchmark>/tau_tagging <path-to-weaver-core>/weaver-core/weaver/
+ln -s <path-to-weaver-core>/weaver-core/ <path-to-weaver-benchmark>/weaver-benchmark/
+
+cd weaver-benchmark/condor
+condor_submit submit.sub
+```
 
 ## Pre-processing for weights
 
