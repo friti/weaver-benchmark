@@ -44,7 +44,7 @@ mkdir output
 cd ../../condor
 mkdir jobs_log
 
-# check the paths in run.sh
+# check the paths in run.sh (both beginning and the end of the script)
 condor_submit submit.sub
 ```
 
