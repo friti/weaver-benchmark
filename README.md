@@ -34,15 +34,17 @@ conda install -c conda-forge root
 
 ## Prepare for running on condor
 ```
-git clone [git@github.com](mailto:git@github.com):friti/weaver-core.git -b domain_adaptation
-git clone [git@github.com](mailto:git@github.com):friti/weaver-benchmark.git -b softditau
+git clone git@github.com:friti/weaver-core.git -b domain_adaptation
+git clone git@github.com:friti/weaver-benchmark.git -b softditau
 ln -s <path-to-weaver-benchmark>/tau_tagging <path-to-weaver-core>/weaver-core/weaver/
 ln -s <path-to-weaver-core>/weaver-core/ <path-to-weaver-benchmark>/weaver-benchmark/
 
 cd weaver-benchmark/weaver-core/weaver
 mkdir output
-cd weaver-benchmark/condor
+cd ../../condor
 mkdir jobs_log
+
+# check the paths in run.sh (both beginning and the end of the script)
 condor_submit submit.sub
 ```
 
