@@ -13,6 +13,7 @@ def get_model(data_config, **kwargs):
     num_targets = 0;
     if type(data_config.target_value) == dict:
         num_targets = sum(len(dct) if type(dct) == list else 1 for dct in data_config.target_value.values())
+    elif data_config.target_value == None: num_targets = 0;
     else:
         num_targets = len(data_config.target_value);
 

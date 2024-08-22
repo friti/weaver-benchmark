@@ -1,7 +1,7 @@
 ## from https://github.com/colizz/weaver-benchmark/blob/main/condor/submit.sub
 Universe                = vanilla
 executable              = run.sh
-arguments               = part particle_transformer_ditau.py ak4_transformer_ditau.yaml /afs/cern.ch/work/f/friti/softtaus/parT/make_ntuples_ditau/CMSSW_13_0_4/src/ParticleNetStudiesRun2/TrainingNtupleMakerAK4/test/outputs $(ClusterId)
+arguments               = part particle_transformer_class_ditau.py ak4_transformer_ditau_v2.yaml /afs/cern.ch/user/f/friti/eos/parT_ntuples/mixed_v2 $(ClusterId)
 output                  = jobs_log/job.$(ClusterId).$(ProcId).out
 error                   = jobs_log/job.$(ClusterId).$(ProcId).err
 log                     = jobs_log/job.$(ClusterId).log
@@ -12,5 +12,6 @@ log                     = jobs_log/job.$(ClusterId).log
 request_GPUs = 1
 request_CPUs = 4
 request_memory = 15000M
-+JobFlavour = "espresso"
++JobFlavour = "tomorrow"
++AccountingGroup = "group_u_CMST3.all" 
 queue
