@@ -39,24 +39,26 @@ pwd
 echo "Starting training"
 
 python3 train.py \
- --data-train ${PATH_TO_SAMPLES}'/samplesv2_job_0_thread0.root' \
- --data-val ${PATH_TO_SAMPLES}'/samplesv2_job_0_thread3.root' \
+ --data-train ${PATH_TO_SAMPLES}'/mixed_v6_job_0_thread0.root' ${PATH_TO_SAMPLES}'/mixed_v6_job_0_thread2.root' \
+ --data-val ${PATH_TO_SAMPLES}'/mixed_v6_job_2_thread0.root' ${PATH_TO_SAMPLES}'/mixed_v6_job_2_thread4.root' \
  --data-config tau_tagging/data/${DATA_CONFIG} \
  --network-config tau_tagging/networks/${MODEL_CONFIG} \
  --model-prefix output/${PREFIX} \
- --gpus 0 --batch-size-train 512 --batch-size-val 512 --start-lr 5e-3 --num-epochs 20 --optimizer ranger \
+ --gpus 0 --batch-size-train 512 --batch-size-val 512 --start-lr 5e-3 --num-epochs 40 --optimizer ranger \
  --log output/${PREFIX}.train.log \
  --fetch-step-train 1 --fetch-step-val 1 --num-workers-train 1 --num-workers-val 1 \
  --weaver-mod class #--remake-weights
+ #--data-train ${PATH_TO_SAMPLES}'/*_thread0.root' \
+ #--data-val ${PATH_TO_SAMPLES}'/*_thread3.root' \
  #--data-train ${PATH_TO_SAMPLES}'/*8*thread0.root' \
  #--data-val ${PATH_TO_SAMPLES}'/*8*thread4.root' \
- #--data-train ${PATH_TO_SAMPLES}'/*thread0.root' ${PATH_TO_SAMPLES}'/*thread1.root' ${PATH_TO_SAMPLES}'/*thread2.root' ${PATH_TO_SAMPLES}'/*thread3.root' \
+
 
 
 echo "Starting prediction"
 
 python3 train.py --predict \
- --data-test ${PATH_TO_SAMPLES}'/samplesv2_job_0_thread0.root' \
+ --data-test ${PATH_TO_SAMPLES}'/mixed_v6_job_0_thread0.root' ${PATH_TO_SAMPLES}'/mixed_v6_job_0_thread2.root' \
  --data-config tau_tagging/data/${DATA_CONFIG} \
  --network-config tau_tagging/networks/${MODEL_CONFIG} \
  --model-prefix output/${PREFIX} \
@@ -65,7 +67,7 @@ python3 train.py --predict \
  --predict-output output/${PREFIX}_predict.root \
  --weaver-mod class
  #--data-test ${PATH_TO_SAMPLES}'/*.root' \
-
+ #--data-test ${PATH_TO_SAMPLES}'/*_thread0.root' \
 [ -d "runs/" ] && tar -caf output.tar output/ runs/ || tar -caf output.tar output/
 mv output.tar /afs/cern.ch/work/f/friti/softtaus/parT/part_training/training/weaver-benchmark/condor/outputs/output_${CLUSTERID}.tar
 
