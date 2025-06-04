@@ -10,7 +10,7 @@
 
 Universe                = vanilla
 executable              = run.sh
-arguments               = part particle_transformer_class_ditau.py ak4_transformer_ditau_v4.yaml /eos/cms/store/cmst3/group/bpark/friti/bstautau/parT_ntuples/step2/ $(ClusterId)
+arguments               = part particle_transformer_class_ditau.py ak4_transformer_ditau_v5.yaml /eos/cms/store/cmst3/group/bpark/friti/bstautau/parT_ntuples/step2/ $(ClusterId)
 output                  = jobs_log/job.$(ClusterId).$(ProcId).out
 error                   = jobs_log/job.$(ClusterId).$(ProcId).err
 log                     = jobs_log/job.$(ClusterId).log
