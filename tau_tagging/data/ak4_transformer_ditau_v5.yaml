@@ -8,7 +8,7 @@ selection:
 
 test_time_selection:
    >-
-   (jet_pt_raw>=5) 
+   (np.abs(jet_eta)<2.5) & (jet_ncand >0)  & (jet_pt_raw>=5) & (jet_pt_raw<=300) & (event%7==0) & (jet_genmatch_pt>0) & (skip_jet == 0)
 
 new_variables:
    ### [format] name: formula
