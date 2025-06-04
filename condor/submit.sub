@@ -1,7 +1,16 @@
+#espresso     = 20 minutes
+#microcentury = 1 hour
+#longlunch    = 2 hours
+#workday      = 8 hours
+#tomorrow     = 1 day
+#testmatch    = 3 days
+#nextweek     = 1 week
 ## from https://github.com/colizz/weaver-benchmark/blob/main/condor/submit.sub
+
+
 Universe                = vanilla
 executable              = run.sh
-arguments               = part particle_transformer_class_ditau.py ak4_transformer_ditau_v3.yaml /afs/cern.ch/user/f/friti/eos/parT_ntuples/mixed_v6 $(ClusterId)
+arguments               = part particle_transformer_class_ditau.py ak4_transformer_ditau_v4.yaml /eos/cms/store/cmst3/group/bpark/friti/bstautau/parT_ntuples/step2/ $(ClusterId)
 output                  = jobs_log/job.$(ClusterId).$(ProcId).out
 error                   = jobs_log/job.$(ClusterId).$(ProcId).err
 log                     = jobs_log/job.$(ClusterId).log
@@ -10,8 +19,8 @@ log                     = jobs_log/job.$(ClusterId).log
 #transfer_output_files   = weaver-benchmark/weaver-core/weaver/output.tar
 #transfer_output_remaps  = "output.tar = output.$(ClusterId).$(ProcId).tar"
 request_GPUs = 1
-request_CPUs = 4
+request_CPUs = 25
 request_memory = 15000M
-+JobFlavour = "tomorrow"
++JobFlavour = "testmatch"
 +AccountingGroup = "group_u_CMST3.all" 
 queue
